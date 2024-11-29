@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   dynamodb-csv-uploader:
     build:
@@ -11,5 +9,5 @@ services:
       S3_BUCKET: "pf-bucket-ingest"    # Nombre del bucket S3
       OUTPUT_FILENAME: "data.csv"      # Nombre del archivo de salida
     volumes:
-      - ./output:/app/output           # Opcional: guardar archivos localmente
+      - ~/.aws:/root/.aws:ro           # Opcional: guardar archivos localmente
     command: python main.py            # Comando para ejecutar el script
