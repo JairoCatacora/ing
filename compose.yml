@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  dynamodb-csv-uploader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      AWS_REGION: "us-east-1"           # Región de AWS
+      DYNAMO_TABLE: "TablaWebScrapping-IGP"     # Nombre de la tabla DynamoDB
+      S3_BUCKET: "pf-bucket-ingest"    # Nombre del bucket S3
+      OUTPUT_FILENAME: "data.csv"      # Nombre del archivo de salida
+    volumes:
+      - ./output:/app/output           # Opcional: guardar archivos localmente
+    command: python main.py            # Comando para ejecutar el script
