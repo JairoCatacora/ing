@@ -37,3 +37,5 @@ def cargar_a_dynamodb(archivo_json, nombre_tabla):
         print(f"Error al interactuar con DynamoDB: {error}")
     except Exception as e:
         print(f"Se produjo un error: {e}")
+
+cargar_a_dynamodb('inventarios.json', 'inventarios')
